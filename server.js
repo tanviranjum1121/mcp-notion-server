@@ -31,7 +31,6 @@ mcpServer.tool(
     if (!MAKE_WEBHOOK_URL) {
       return { content: [{ type: "text", text: "Error: Make.com Webhook URL is missing!" }] };
     }
-    
     try {
       await axios.post(MAKE_WEBHOOK_URL, { tag, title, content });
       return { content: [{ type: "text", text: `Success! Sent [${title}] to Make.com with tag: ${tag}` }] };
@@ -45,7 +44,9 @@ let transport;
 
 // এই লিংকেই Gemini কানেক্ট করবে
 app.get('/sse', async (req, res) => {
-  transport = new SSEServerTransport('/messages', res);
+  // জেমিনির কনফিউশন দূর করতে এখানে পুরো লিংক দেওয়া হয়েছে
+  const fullMessageUrl = 'https://mcp-notion-server-umpt.onrender.com/messages';
+  transport = new SSEServerTransport(fullMessageUrl, res);
   await mcpServer.connect(transport);
 });
 
