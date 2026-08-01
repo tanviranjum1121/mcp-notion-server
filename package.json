@@ -1,13 +1,17 @@
 {
   "name": "mcp-notion-server",
   "version": "1.0.0",
-  "description": "MCP Server for Gemini Spark to Notion via Make.com",
+  "description": "MCP Server for Gemini Spark",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "@modelcontextprotocol/sdk": "^1.0.1",
+    "zod": "^3.22.4"
   }
 }
